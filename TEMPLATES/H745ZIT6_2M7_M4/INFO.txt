@@ -1,0 +1,50 @@
+###########################################################
+# SOFTWARE REQUIREMENTS
+# UBUNTU (version: 18.04.5 LTS)
+###########################################################
+arm-none-eabi-gcc (version: 9-2019-q4-major)
+python3 (version: 3.6.9)
+minicom (version: 2.7.1)
+ST-LINK_gdbserver (version: 5.7.0)
+STM32CubeIDE (version: 1.6.0)
+STM32CubeMX (version: 6.6.1)
+STM32CubeProgrammer (version: 2.6.0)
+[optional] STM32CubeMonitor (version: 1.1.0)
+
+###########################################################
+# EXAMPLE 1 (Without debug)
+# Obs.: Program interaction will take place at Terminal 1
+###########################################################
+# Terminal 1:
+make clean; make
+make minicom
+
+# Terminal 2:
+make flash
+
+###########################################################
+# EXAMPLE 2 (With debug)
+# Obs.: Program interaction will take place at Terminal 1
+#       GDB interaction will take place at Terminal 3
+###########################################################
+# Terminal 1:
+make clean; make
+make minicom
+
+# Terminal 2:
+make gdb-server
+
+# Terminal 3:
+make gdb
+
+###########################################################
+# EXAMPLE 3 (FI with debug)
+###########################################################
+# Terminal 1:
+make clean; make
+make gdb-server
+
+# Terminal 2:
+cd ../Scripts
+python3 FI_example.py
+
